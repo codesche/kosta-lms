@@ -2,9 +2,7 @@ package com.kosta.entity;
 
 import com.kosta.domain.UserRole;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,7 +17,8 @@ import java.util.List;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @RequiredArgsConstructor
-@Data
+@Getter
+@Setter
 public class User implements UserDetails {
 
     @Id
@@ -50,7 +49,7 @@ public class User implements UserDetails {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @Column(name = "is_deleted", columnDefinition = "n")
+    @Column(name = "is_deleted")
     private String isDeleted;
 
     @Override

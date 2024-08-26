@@ -1,8 +1,7 @@
 package com.kosta.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -11,7 +10,8 @@ import java.time.LocalDateTime;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @RequiredArgsConstructor
-@Data
+@Getter
+@Setter
 public class Course {
 
     @Id
@@ -28,6 +28,9 @@ public class Course {
     @Column(name = "hour_period")
     private int hourPeriod;
 
+    @Column(nullable = false)
+    private int price;
+
     @JoinColumn(name = "teacher_id")
     @ManyToOne
     private User teacher;
@@ -39,4 +42,11 @@ public class Course {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    @Builder
+    public Course(String name, String description, int hourPeriod, User teacher) {
+        this.name = name;
+        this.description = description;
+        this.hourPeriod = hourPeriod;
+        this.teacher = teacher;
+    }
 }
