@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: single_project
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lms_db
+    username: root
+    password: Dmove1122!
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    open-in-view: false
+  sql:
+    init:
+      mode: never
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
