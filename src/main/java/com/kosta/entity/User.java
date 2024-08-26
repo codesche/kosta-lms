@@ -20,7 +20,7 @@ import java.util.List;
 @EntityListeners(AuditingEntityListener.class)
 @RequiredArgsConstructor
 @Data
-public class Member implements UserDetails {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -61,7 +61,7 @@ public class Member implements UserDetails {
     }
 
     @Builder
-    public Member(String username, String name, String email, String password, UserRole role) {
+    public User(String username, String name, String email, String password, UserRole role) {
         this.username = username;
         this.name = name;
         this.email = email;

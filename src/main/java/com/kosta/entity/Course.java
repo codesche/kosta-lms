@@ -30,7 +30,7 @@ public class Course {
 
     @JoinColumn(name = "teacher_id")
     @ManyToOne
-    private Member teacher;
+    private User teacher;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

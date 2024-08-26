@@ -20,7 +20,7 @@ public class AttendCourse {
 
     @JoinColumn(name = "student_id")
     @ManyToOne
-    private Member student;
+    private User student;
 
     @JoinColumn(name = "course_id")
     @ManyToOne
