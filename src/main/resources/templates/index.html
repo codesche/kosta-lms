@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/layout}">
+<main layout:fragment="main" class="container my-5" style="padding-top: 120px">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1>KOSTA 학습관리시스템</h1>
+            <p class="lead text-muted">KOSTA의 강좌 및 수강생을 관리하는 사이트입니다.</p>
+            <p sec:authorize="!isAuthenticated()">
+                <a href="/login" class="btn btn-primary my-2">로그인</a>
+                <a href="/sign-up" class="btn btn-secondary my-2">회원 가입</a>
+            </p>
+            <p sec:authorize="isAuthenticated()">
+                <a href="/logout" class="btn btn-primary my-2">로그아웃</a>
+            </p>
+        </div>
+    </section>
+</main>
+</html>

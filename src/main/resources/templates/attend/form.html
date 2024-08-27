@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/layout}">
+<main layout:fragment="main" class="container my-5" style="padding-top: 120px">
+    <form action="/attend/add" method="POST">
+        <label for="course">강좌</label>
+        <select name="course" class="form-control form-control-sm d-inline-block" id="course">
+            <option value="student" selected>학생</option>
+            <option value="teacher">강사</option>
+        </select>
+        <br/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</main>
+</html>

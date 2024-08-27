@@ -2,6 +2,7 @@ package com.kosta.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -28,13 +29,11 @@ public class Course {
     @Column(name = "hour_period")
     private int hourPeriod;
 
-    @Column(nullable = false)
-    private int price;
-
     @JoinColumn(name = "teacher_id")
     @ManyToOne
     private User teacher;
 
+    @CreatedDate
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 

@@ -31,7 +31,6 @@ class AttendCourseRepositoryTest {
                 .course(Course.builder()
                         .name("Java의 정석")
                         .build())
-                .price(10000)
                 .build();
 
         // when (테스트 진행할 행위)
@@ -53,7 +52,6 @@ class AttendCourseRepositoryTest {
                 .course(Course.builder()
                         .name("Java의 정석")
                         .build())
-                .price(10000)
                 .build();
         AttendCourse savedAttendCourse = attendCourseRepository.save(attendCourse);
 
@@ -65,7 +63,6 @@ class AttendCourseRepositoryTest {
         assertThat(foundAttendCourse.getId()).isEqualTo(savedAttendCourse.getId());
         assertThat(foundAttendCourse.getStudent()).isEqualTo(savedAttendCourse.getStudent());
         assertThat(foundAttendCourse.getCourse()).isEqualTo(savedAttendCourse.getCourse());
-        assertThat(foundAttendCourse.getPrice()).isEqualTo(savedAttendCourse.getPrice());
     }
 
 
@@ -81,7 +78,6 @@ class AttendCourseRepositoryTest {
                 .course(Course.builder()
                         .name("Java의 정석")
                         .build())
-                .price(10000)
                 .build();
         AttendCourse savedAttendCourse = attendCourseRepository.save(attendCourse);
 

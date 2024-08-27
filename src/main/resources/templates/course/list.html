@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/layout}">
+<main layout:fragment="main" class="container my-5" style="padding-top: 120px">
+    <table class="table">
+        <thead class="thead-dark" th:align="center">
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">닉네임</th>
+            <th scope="col">강좌명</th>
+            <th scope="col">요약</th>
+            <th scope="col">교육시간</th>
+            <th scope="col">등록일</th>
+            <th scope="col">수정일</th>
+        </tr>
+        </thead>
+        <tbody>
+        <h3>강좌 리스트</h3>
+        <br/>
+        <tr th:each="x : ${list}" th:align="center">
+            <th th:text="${x.id}">1</th>
+            <td th:text="${x.getTeacher()}">닉네임</td>
+            <td th:text="${x.name}">강좌명</td>
+            <td th:text="${x.description}">요약</td>
+            <td th:text="${x.hourPeriod}">교육 시간</td>
+            <td th:text="${#temporals.format(x.createdAt, 'yyyy년 MM월 dd일')}">등록일</td>
+            <td th:text="${#temporals.format(x.updatedAt, 'yyyy년 MM월 dd일')}">수정일</td>
+        </tr>
+        </tbody>
+    </table>
+    <a sec:authorize="isAuthenticated()"
+       href="/course/add"
+       class='btn btn-success btn align-self-center'>강의 등록</a>
+</main>
+</html>

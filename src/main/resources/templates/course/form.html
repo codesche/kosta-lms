@@ -1,0 +1,24 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/layout}">
+
+<main layout:fragment="main" class="container my-5" style="padding-top: 120px">
+    <form action="/course/add" method="POST">
+        <div class="form-group">
+            <label for="name">강의명</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="강의명을 입력하세요." required>
+        </div>
+        <div class="form-group">
+            <label for="description">강의 요약</label>
+            <input type="text" class="form-control" id="description" name="description" placeholder="강의에 대한 간략한 설명을 입력하세요." required>
+        </div>
+        <div class="form-group">
+            <label for="hourPeriod">교육시간</label>
+            <input type="number" class="form-control" id="hourPeriod" name="hourPeriod" placeholder="교육 시간을 입력하세요." required>
+        </div>
+        <button class="btn btn-primary">강의 등록 하기</button>
+    </form>
+</main>
+</html>
