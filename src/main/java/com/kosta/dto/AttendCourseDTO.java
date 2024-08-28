@@ -3,35 +3,30 @@ package com.kosta.dto;
 import com.kosta.entity.AttendCourse;
 import com.kosta.entity.Course;
 import com.kosta.entity.User;
-import lombok.Builder;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Data
-@RequiredArgsConstructor
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class AttendCourseDTO {
-    private User student;
+    private Long studentId;
+    private Long courseId;
     private Course course;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private String studentName;
+    private String courseName;
+    private User student;
+    private Long id;
 
-    public AttendCourseDTO(User student, Course course) {
-        this.student = student;
-        this.course = course;
+    public AttendCourse toEntity(User user) {
+        return AttendCourse.builder()
+                .student(user)
+                .course(course)
+                .build();
     }
-
-//    public AttendCourse setAttendCourse() {
-//        AttendCourse attendCourse = new AttendCourse();
-//        User user = new User();
-//        attendCourse.setStudent(user.getUsername());
-//        attendCourse.setCourse();
-//        return user;
-//    }
-    public AttendCourse toEntity() {
-        return new AttendCourse(student, course);
-    }
-
 
 }

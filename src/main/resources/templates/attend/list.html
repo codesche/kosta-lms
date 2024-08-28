@@ -9,18 +9,18 @@
         <tr>
             <th scope="col">id</th>
             <th scope="col">닉네임</th>
-            <th scope="col">이메일</th>
             <th scope="col">수강 강좌명</th>
             <th scope="col">등록일</th>
             <th scope="col">수정일</th>
         </tr>
         </thead>
+        <h3>수강중인 학생 리스트</h3>
+        <br/>
         <tbody>
-        <tr th:each="x : ${list}">
-            <th th:text="${x.id}">1</th>
-            <td th:text="${x.student.username}">닉네임</td>
-            <td th:text="${x.student.email}">이메일</td>
-            <td th:text="${x.course.name}">강좌명</td>
+        <tr th:each="x : ${list}" th:align="center">
+            <th th:text="${x.studentId}">1</th>
+            <td th:text="${x.studentName}">닉네임</td>
+            <td th:text="${x.courseName}">강좌명</td>
             <td th:text="${#temporals.format(x.createdAt, 'yyyy년 MM월 dd일')}">등록일</td>
             <td th:text="${#temporals.format(x.updatedAt, 'yyyy년 MM월 dd일')}">수정일</td>
         </tr>
@@ -28,6 +28,6 @@
     </table>
     <a sec:authorize="isAuthenticated()"
        href="/attend/add"
-       class='btn btn-success btn align-self-center'>글쓰기</a>
+       class='btn btn-success btn align-self-center'>수강 신청</a>
 </main>
 </html>

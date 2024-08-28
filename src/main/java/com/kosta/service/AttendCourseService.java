@@ -7,9 +7,9 @@ import com.kosta.entity.User;
 import java.util.List;
 
 public interface AttendCourseService {
-    AttendCourse save(AttendCourseDTO attendCourseDTO, User user);
-//    List<AttendCourse> findAll();
-//
-//    AttendCourseDTO save(AttendCourseDTO attendCourseDTO, User user);
+    boolean save(AttendCourseDTO attendCourseDTO, User user);
+
+    List<AttendCourseDTO> findAll(User user);
+
 
 }

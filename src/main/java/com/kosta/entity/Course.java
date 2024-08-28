@@ -48,4 +48,11 @@ public class Course {
         this.hourPeriod = hourPeriod;
         this.teacher = teacher;
     }
+
+    public void modifyCourse(String name, String description, int hourPeriod) {
+        this.name = name;
+        this.description = description;
+        this.hourPeriod = hourPeriod;
+    }
+
 }

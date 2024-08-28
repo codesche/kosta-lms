@@ -11,5 +11,9 @@ public interface CourseService {
 
     List<CourseDTO> findAll(User user);
 
-//    List<CourseDTO> findAll();
+    CourseDTO findById(Long id, User user);
+
+    void deleteById(Long id, User user) throws Exception;
+
+    boolean update(CourseDTO courseDTO, User user);
 }

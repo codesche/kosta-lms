@@ -1,0 +1,49 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/layout}">
+
+<main layout:fragment="main" class="container my-5" style="padding-top: 120px">
+    <form
+        th:action="${userList ne null ? '/user/modify' : '/user/add'}"
+        th:method="${userList ne null ? 'PATCH' : 'POST'}">
+        <input
+                type="hidden"
+                name="id"
+                th:if="${userList ne null}"
+                th:value="${userList.id}"
+        />
+        <div class="form-group">
+            <label for="nickname">닉네임</label>
+            <input type="text" class="form-control" id="nickname" name="username"
+                   th:value="${userList ne null ? userList.username : ''}"
+                   placeholder="닉네임을 입력하세요." required>
+        </div>
+        <div class="form-group">
+            <label for="name">이름</label>
+            <input type="text" class="form-control" id="name" name="name"
+                   th:value="${userList ne null ? userList.name : ''}"
+                   placeholder="이름을 입력하세요." required>
+        </div>
+        <div class="form-group">
+            <label for="email">이메일</label>
+            <input type="email" class="form-control" id="email" name="email"
+                   th:value="${userList ne null ? userList.email : ''}"
+                   placeholder="이메일을 입력하세요." required>
+        </div>
+        <div class="form-group">
+            <label for="division">사용자 구분</label>
+            <select name="role" class="form-control form-control-sm d-inline-block" id="division">
+                <option value="ROLE_USER" th:selected="${userList eq null ? 'false' : userList.role == 'ROLE_USER'}">학생</option>
+                <option value="ROLE_TEACHER" th:selected="${userList eq null ? 'false' : userList.role == 'ROLE_TEACHER'}">강사</option>
+                <option value="ROLE_ADMIN" th:selected="${userList eq null ? 'false' : userList.role == 'ROLE_ADMIN'}">관리자</option>
+            </select>
+        </div>
+        <input type="hidden" name="password" value="1" />
+        <button class="btn btn-primary">
+            [[ ${userList ne null ? '수정하기' : '가입하기'} ]]
+        </button>
+    </form>
+</main>
+</html>

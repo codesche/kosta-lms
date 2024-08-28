@@ -70,4 +70,12 @@ public class User implements UserDetails {
         this.password = password;
         this.role = role;
     }
+
+    public void modifyUser(String username, String name, String email, UserRole role) {
+        this.username = username;
+        this.name = name;
+        this.email = email;
+        this.role = UserRole.toUserRolefromString(role.getRole());
+    }
+
 }

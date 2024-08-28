@@ -1,0 +1,46 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/layout}">
+
+<main layout:fragment="main" class="container my-5" style="padding-top: 120px">
+    <form
+            th:action="${userList ne null ? '/user/delete' : '/user/add'}"
+            th:method="${userList ne null ? 'DELETE' : 'POST'}">
+
+        <fieldset disabled>
+            <div class="form-group">
+                <label for="nickname">닉네임</label>
+                <input type="text" class="form-control" id="nickname"
+                       name="username" th:value="${userList.username}">
+            </div>
+            <div class="form-group">
+                <label for="name">이름</label>
+                <input type="text" class="form-control" id="name"
+                       name="name" placeholder="이름을 입력하세요." th:value="${userList.name}">
+            </div>
+            <div class="form-group">
+                <label for="email">이메일</label>
+                <input type="email" class="form-control" id="email"
+                       name="email" placeholder="이메일을 입력하세요." th:value="${userList.email}">
+            </div>
+            <div class="form-group">
+                <label for="division">사용자 구분</label>
+                <input type="text" class="form-control" id="division"
+                name="role" th:value="${userList.role}">
+            </div>
+        </fieldset>
+        <a
+                th:href="@{'/user/modify/' + ${userList.id}}"
+                class='btn btn-secondary btn-sm'>
+            수정
+        </a>
+        <input type="hidden" name="id" th:value="${userList.id}"/>
+        <button
+                class='btn btn-danger btn-sm'>
+            삭제
+        </button>
+    </form>
+</main>
+</html>

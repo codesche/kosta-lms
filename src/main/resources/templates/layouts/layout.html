@@ -28,7 +28,7 @@
 
 <body>
   <nav th:fragment="fragment-nav" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="/">SpringBoot 게시판</a>
+    <a class="navbar-brand" href="/">Mini LSM 사이트</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -36,14 +36,14 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item" sec:authorize="hasAuthority('USER') || hasAuthority('ADMIN')">
+        <li class="nav-item" sec:authorize="hasAuthority('USER') || hasAuthority('ADMIN') || hasAuthority('TEACHER')">
           <a class="nav-link" href="/attend/list">수강 정보<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item" sec:authorize="hasAuthority('TEACHER') || hasAuthority('ADMIN')">
           <a class="nav-link" href="/course/list">강좌 정보</a>
         </li>
         <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
-          <a class="nav-link" href="/admin/list">회원 정보</a>
+          <a class="nav-link" href="/user/list">회원 정보</a>
         </li>
       </ul>
     </div>
@@ -64,7 +64,7 @@
   <main layout:fragment="main"></main>
   <footer layout:fragment="footer" class="text-muted" style="padding-top: 10px">
     <div class="container">
-      <p th:align="center">@ 2024 Copyright SpringBoot-LMS (shout out to 최인규)</p>
+      <p th:align="center">@ 2024 Copyright SpringBoot-LMS (shout out to 인규형)</p>
     </div>
   </footer>
 </body>

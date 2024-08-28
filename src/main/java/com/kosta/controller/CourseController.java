@@ -11,9 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,6 +33,7 @@ public class CourseController {
             courseService.save(courseDTO, user);
             return "redirect:/course/list";
         } catch (Exception e) {
+            e.printStackTrace();
             return "error";
         }
     }
@@ -45,5 +44,52 @@ public class CourseController {
         model.addAttribute("list", courseList);
         return "course/list";
     }
+
+    @GetMapping("/detail/{id}")
+    public String detailPage(@PathVariable("id") Long id, Model model, @AuthenticationPrincipal User user) {
+        try {
+            CourseDTO courseList = courseService.findById(id, user);
+            model.addAttribute("course", courseList);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
+        return "/course/detail";
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deleteCourse(@PathVariable("id") Long id, @AuthenticationPrincipal User user) {
+        try {
+            courseService.deleteById(id, user);
+            return "redirect:/course/list";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
+    }
+
+    @GetMapping("/modify/{id}")
+    public String modifyPage(@PathVariable("id") Long id, Model model, @AuthenticationPrincipal User user) {
+        try {
+            CourseDTO courseList = courseService.findById(id, user);
+            model.addAttribute("course", courseList);
+            return "/course/form";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
+    }
+
+    @PatchMapping("/modify")
+    public String modifyPage(CourseDTO courseDTO, @AuthenticationPrincipal User user) {
+        try {
+            courseService.update(courseDTO, user);
+            return "redirect:/course/list";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
+    }
+
 
 }

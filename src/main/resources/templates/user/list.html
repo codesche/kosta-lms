@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/layout}">
+<main layout:fragment="main" class="container my-5" style="padding-top: 120px">
+  <table class="table">
+    <thead class="thead-dark" th:align="center">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">닉네임</th>
+      <th scope="col">이름</th>
+      <th scope="col">이메일</th>
+      <th scope="col">사용자 구분</th>
+      <th scope="col">가입일</th>
+      <th scope="col">고나리</th>
+    </tr>
+    </thead>
+    <tbody>
+    <h3>회원 리스트</h3>
+    <br/>
+    <tr th:each="x : ${userList}" th:align="center">
+      <th th:text="${x.id}">1</th>
+      <td th:text="${x.username}">닉네임</td>
+      <td th:text="${x.name}">이름</td>
+      <td th:text="${x.email}">이메일</td>
+      <td th:text="${x.role}">사용자 구분</td>
+      <td th:text="${#temporals.format(x.createdAt, 'yyyy년 MM월 dd일')}">등록일</td>
+      <td>
+        <button th:onclick="|location.href='/user/detail/' + ${x.id}|">관리</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <a sec:authorize="isAuthenticated()"
+     href="/sign-up"
+     class='btn btn-success btn align-self-center'>회원 등록</a>
+</main>
+</html>

@@ -5,13 +5,13 @@
       layout:decorate="~{layouts/layout}">
 <main layout:fragment="main" class="container my-5" style="padding-top: 120px">
     <form action="/attend/add" method="POST">
-        <label for="course">강좌</label>
-        <select name="course" class="form-control form-control-sm d-inline-block" id="course">
-            <option value="student" selected>학생</option>
-            <option value="teacher">강사</option>
+        <label for="course"><h3>강좌 선택하기</h3></label>
+        <select name="courseId" class="form-control form-control-sm d-inline-block" id="course">
+            <option th:each="x : ${course}" th:value="${x.id}">[[${x.name}]]</option>
         </select>
         <br/>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <br/>
+        <button type="submit" class="btn btn-primary">수강 등록하기</button>
     </form>
 </main>
 </html>

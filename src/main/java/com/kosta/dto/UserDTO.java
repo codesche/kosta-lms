@@ -8,24 +8,30 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Data
-@RequiredArgsConstructor
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserDTO {
     private Long id;
     private String username;
     private String name;
     private String password;
     private String role;
+    private User tempRole;
     private String email;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     @Builder
     public UserDTO(Long id, String username, String name, String password, String role,
-                   String email) {
+                   String email, User tempRole) {
         this.id = id;
         this.username = username;
         this.name = name;
         this.password = password;
         this.role = role;
         this.email = email;
+        this.tempRole = tempRole;
     }
 
     public User setUser() {
@@ -35,7 +41,8 @@ public class UserDTO {
         user.setUsername(username);
         user.setName(name);
         user.setPassword(password);
-        user.setRole(role.equals("teacher") ? UserRole.TEACHER : UserRole.USER);
+        user.setRole(UserRole.toUserRolefromString(role));
         return user;
     }
+
 }

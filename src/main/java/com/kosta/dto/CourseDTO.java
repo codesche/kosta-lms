@@ -15,13 +15,13 @@ import java.time.format.DateTimeFormatter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CourseDTO {
-    private Long id;
     private String name;
     private String description;
     private int hourPeriod;
     private String teacher;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private Long id;
 
     public static Course toEntity(CourseDTO courseDTO, User user) {
         return Course.builder()
