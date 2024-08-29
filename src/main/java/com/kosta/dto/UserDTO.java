@@ -41,7 +41,7 @@ public class UserDTO {
         user.setUsername(username);
         user.setName(name);
         user.setPassword(password);
-        user.setRole(UserRole.toUserRolefromString(role));
+        user.setRole(role.equals("teacher") ? UserRole.TEACHER : UserRole.USER);
         return user;
     }
 

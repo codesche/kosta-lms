@@ -24,11 +24,19 @@
           integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
           crossorigin="anonymous"></script>
   <title></title>
+
+  <style>
+      .user-top {
+          font-size: 12pt;
+          color: white;
+          padding-top: 25px;
+      }
+  </style>
 </head>
 
 <body>
   <nav th:fragment="fragment-nav" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="/">Mini LSM 사이트</a>
+    <a class="navbar-brand" href="/">🜸 Mini LSM 사이트 🜸</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -46,6 +54,7 @@
           <a class="nav-link" href="/user/list">회원 정보</a>
         </li>
       </ul>
+      <p class="user-top" th:text="${#strings.setSplit(#authentication.name, '@')[0] + ' 님 환영합니다'}"></p>
     </div>
     <ul class="dropdown">
       <br>

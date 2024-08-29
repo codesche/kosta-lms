@@ -8,6 +8,7 @@ import com.kosta.entity.User;
 import com.kosta.repository.CourseRepository;
 import com.kosta.service.CourseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

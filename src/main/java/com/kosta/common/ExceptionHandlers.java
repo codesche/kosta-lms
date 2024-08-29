@@ -12,7 +12,7 @@ import java.io.StringWriter;
 @ControllerAdvice
 public class ExceptionHandlers {
     @ExceptionHandler(Exception.class)
-    public String defaultExceptionHandler(Exception e, Model model) {
+    public static String defaultExceptionHandler(Exception e, Model model) {
         log.error(e.getMessage());
         StringWriter sw = new StringWriter();
         e.printStackTrace(new PrintWriter(sw));

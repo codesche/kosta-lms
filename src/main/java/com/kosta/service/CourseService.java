@@ -1,7 +1,9 @@
 package com.kosta.service;
 
 import com.kosta.dto.CourseDTO;
+import com.kosta.entity.Course;
 import com.kosta.entity.User;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 

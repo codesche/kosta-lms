@@ -1,5 +1,6 @@
 package com.kosta.dto;
 
+import com.kosta.common.ExceptionHandlers;
 import com.kosta.entity.Course;
 import com.kosta.entity.User;
 import lombok.AllArgsConstructor;
@@ -27,7 +28,7 @@ public class CourseDTO {
         return Course.builder()
                 .name(courseDTO.getName())
                 .description(courseDTO.getDescription())
-                .hourPeriod(courseDTO.getHourPeriod())
+                .hourPeriod(courseDTO.getHourPeriod() > 0 ? courseDTO.getHourPeriod() : 0)
                 .teacher(user)
                 .build();
     }
